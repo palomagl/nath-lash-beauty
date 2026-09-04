@@ -1,9 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import heroLashes from "../assets/hero-lashes.jpg";
-import gallery1 from "../assets/gallery-1.jpg";
-import gallery2 from "../assets/gallery-2.jpg";
-import gallery3 from "../assets/gallery-3.jpg";
-import gallery4 from "../assets/gallery-4.jpg";
 
 const instagram = "https://www.instagram.com/nathlorenzon_beauty/";
 const whatsapp =
@@ -49,7 +44,9 @@ function Index() {
         aria-label="Falar com a Nath no WhatsApp"
         className="fixed bottom-5 right-5 z-50 grid size-14 place-items-center rounded-full bg-primary text-primary-foreground shadow-editorial transition-transform hover:scale-105 md:hidden"
       >
-        <span aria-hidden="true" className="text-xl">↗</span>
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" className="size-7">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884M20.463 3.488A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413" />
+        </svg>
       </a>
     </div>
   );
@@ -111,7 +108,7 @@ function HeroSection() {
       <div className="relative mx-auto w-full max-w-md lg:col-span-6 lg:mr-0">
         <div aria-hidden="true" className="absolute -left-5 -top-5 size-full border-2 border-secondary" />
         <div className="relative aspect-[4/5] overflow-hidden bg-secondary shadow-editorial">
-          <img src={heroLashes} alt="Aplicação profissional de extensão de cílios" width={1000} height={1250} fetchPriority="high" className="size-full object-cover" />
+          <img src="/foto1.jpeg" alt="Nath Lorenzon sorrindo, com blazer rosa, em foto de estúdio" width={668} height={1000} fetchPriority="high" className="size-full object-cover object-[center_20%]" />
         </div>
         <div className="absolute -bottom-8 -left-4 bg-card p-5 shadow-editorial sm:-left-10">
           <strong className="block font-display text-3xl font-normal text-primary">+6 anos</strong>
@@ -125,7 +122,8 @@ function HeroSection() {
 const services = [
   { number: "01", title: "Volume Brasileiro", description: "Preenchimento marcante, leve e com acabamento personalizado para o seu olhar." },
   { number: "02", title: "Volume Russo", description: "Fios delicados em leques para conquistar mais densidade, definição e sofisticação." },
-  { number: "03", title: "Design de Sobrancelhas", description: "Desenho personalizado que valoriza seus traços e cria harmonia para o rosto." },
+  { number: "03", title: "Volume Egípcio 5D", description: "Fios abertos em leque de 5 pontas, puxados para os cantos externos, para um efeito marcante e alongado." },
+  { number: "04", title: "Design de Sobrancelhas", description: "Desenho personalizado que valoriza seus traços e cria harmonia para o rosto." },
 ];
 
 function ServicesSection() {
@@ -139,7 +137,7 @@ function ServicesSection() {
           </div>
           <p className="max-w-sm text-muted-foreground">Técnicas escolhidas para respeitar seus fios naturais e traduzir o resultado que você deseja.</p>
         </div>
-        <div className="mt-14 grid gap-px bg-border md:grid-cols-3">
+        <div className="mt-14 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service) => (
             <article key={service.number} className="group bg-background p-8 transition-colors duration-300 hover:bg-primary hover:text-primary-foreground">
               <span className="font-display text-4xl text-primary/35 transition-colors group-hover:text-primary-foreground/50">{service.number}</span>
@@ -153,11 +151,15 @@ function ServicesSection() {
   );
 }
 
-const gallery = [
-  { src: gallery1, alt: "Extensão de cílios com acabamento natural" },
-  { src: gallery2, alt: "Resultado de volume de cílios marcante" },
-  { src: gallery3, alt: "Extensão de cílios com curvatura personalizada" },
-  { src: gallery4, alt: "Detalhe de aplicação profissional de cílios" },
+const gallery: { src: string; alt: string; type?: "video"; position?: string }[] = [
+  { src: "/olhar.jpeg", alt: "Detalhe real de resultado de extensão de cílios" },
+  { src: "/olhar3.png", alt: "Detalhe real de resultado de extensão de cílios" },
+  { src: "/videoolhar.mp4", alt: "Vídeo mostrando resultado real de extensão de cílios", type: "video" },
+  {
+    src: "/olhar2.jpeg",
+    alt: "Detalhe real de resultado de cílios e sobrancelha",
+    position: "center 25%",
+  },
 ];
 
 function GallerySection() {
@@ -189,10 +191,39 @@ function GallerySection() {
   );
 }
 
-function GalleryImage({ image, shape }: { image: { src: string; alt: string }; shape: "square" | "portrait" }) {
+function GalleryImage({
+  image,
+  shape,
+}: {
+  image: { src: string; alt: string; type?: "video"; position?: string };
+  shape: "square" | "portrait";
+}) {
+  const style = image.position ? { objectPosition: image.position } : undefined;
   return (
     <figure className={`group overflow-hidden bg-secondary ${shape === "square" ? "aspect-square" : "aspect-[3/4]"}`}>
-      <img src={image.src} alt={image.alt} width={800} height={shape === "square" ? 800 : 1067} loading="lazy" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+      {image.type === "video" ? (
+        <video
+          src={image.src}
+          aria-label={image.alt}
+          muted
+          loop
+          playsInline
+          autoPlay
+          preload="metadata"
+          style={style}
+          className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+      ) : (
+        <img
+          src={image.src}
+          alt={image.alt}
+          width={800}
+          height={shape === "square" ? 800 : 1067}
+          loading="lazy"
+          style={style}
+          className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+      )}
     </figure>
   );
 }
