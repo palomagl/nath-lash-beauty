@@ -53,42 +53,43 @@
   --color-rose-light: var(--rose-light);
   --color-hairline: var(--hairline);
 
-  --font-display: "Playfair Display", serif;
-  --font-body: "Inter", sans-serif;
-  --font-meta: "JetBrains Mono", monospace;
+  --font-display: "DM Serif Display", serif;
+  --font-body: "Fira Sans", sans-serif;
 }
 
 :root {
   --radius: 0.625rem;
 
-  /* Nath Beauty light palette */
-  --background: oklch(0.97 0.01 350);
-  --foreground: oklch(0.25 0.03 350);
-  --card: oklch(0.99 0.005 350);
-  --card-foreground: oklch(0.25 0.03 350);
-  --popover: oklch(0.99 0.005 350);
-  --popover-foreground: oklch(0.25 0.03 350);
-  --primary: oklch(0.62 0.15 345);
+  /* Nath Beauty signature pink palette */
+  --background: oklch(0.985 0.009 350);
+  --foreground: oklch(0.235 0.012 340);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.235 0.012 340);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.235 0.012 340);
+  --primary: oklch(0.64 0.22 350);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.92 0.02 350);
+  --secondary: oklch(0.85 0.09 350);
   --secondary-foreground: oklch(0.25 0.03 350);
-  --muted: oklch(0.92 0.02 350);
-  --muted-foreground: oklch(0.45 0.04 350);
+  --muted: oklch(0.95 0.025 350);
+  --muted-foreground: oklch(0.46 0.025 340);
   --accent: oklch(0.85 0.08 345);
   --accent-foreground: oklch(0.25 0.03 350);
   --destructive: oklch(0.58 0.22 25);
   --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.25 0.03 350 / 0.08);
+  --border: oklch(0.64 0.22 350 / 0.14);
   --input: oklch(0.25 0.03 350 / 0.15);
-  --ring: oklch(0.62 0.15 345);
+  --ring: oklch(0.64 0.22 350);
 
-  --petal: oklch(0.97 0.01 350);
-  --petal-deep: oklch(0.92 0.02 350);
-  --ink: oklch(0.25 0.03 350);
-  --ink-soft: oklch(0.25 0.03 350 / 0.6);
-  --rose: oklch(0.62 0.15 345);
-  --rose-light: oklch(0.85 0.08 345);
-  --hairline: oklch(0.25 0.03 350 / 0.08);
+  --petal: var(--background);
+  --petal-deep: var(--muted);
+  --ink: var(--foreground);
+  --ink-soft: var(--muted-foreground);
+  --rose: var(--primary);
+  --rose-light: var(--secondary);
+  --hairline: var(--border);
+  --shadow-editorial: 0 24px 60px -28px color-mix(in oklab, var(--foreground) 34%, transparent);
+  --shadow-primary: 0 18px 40px -22px color-mix(in oklab, var(--primary) 70%, transparent);
 }
 
 .dark {

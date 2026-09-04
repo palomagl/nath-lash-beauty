@@ -5,23 +5,23 @@ import gallery2 from "../assets/gallery-2.jpg";
 import gallery3 from "../assets/gallery-3.jpg";
 import gallery4 from "../assets/gallery-4.jpg";
 
+const instagram = "https://www.instagram.com/nathlorenzon_beauty/";
+const whatsapp =
+  "https://api.whatsapp.com/send/?phone=5551999866217&text=Ol%C3%A1%2C+tudo+bem%3F+Ser%C3%A1+uma+honra+atende-l%C3%A1%21";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Nath Beauty — Lash Designer em São Paulo" },
+      { title: "Nath Beauty — Extensão de Cílios em Sapiranga" },
       {
         name: "description",
         content:
-          "Ateliê de lash design da Nath: extensão de cílios fio a fio com técnicas exclusivas, naturalidade e sofisticação. Agende sua avaliação.",
+          "Nath Lorenzon é especialista em extensão de cílios e design de sobrancelhas em Sapiranga, RS. Agende seu horário.",
       },
-      {
-        property: "og:title",
-        content: "Nath Beauty — Lash Designer em São Paulo",
-      },
+      { property: "og:title", content: "Nath Beauty — Olhar que transforma" },
       {
         property: "og:description",
-        content:
-          "Extensão de cílios fio a fio com técnicas exclusivas e resultados naturais.",
+        content: "Extensão de cílios e sobrancelhas com atendimento em Sapiranga, RS.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -32,33 +32,24 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-petal font-body text-ink antialiased selection:bg-rose/20 selection:text-ink">
-      {/* Atmospheric Background */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -left-20 size-[600px] rounded-full bg-rose-light/40 blur-[120px] animate-pulse-slow"></div>
-        <div className="absolute top-1/3 -right-40 size-[500px] rounded-full bg-rose/10 blur-[140px]"></div>
-        <div className="absolute -bottom-20 left-1/4 size-[550px] rounded-full bg-petal-deep blur-[100px]"></div>
-      </div>
-
+    <div className="min-h-screen bg-background font-body text-foreground antialiased selection:bg-secondary selection:text-primary">
       <Header />
-
-      <main className="relative z-20">
+      <main>
         <HeroSection />
         <ServicesSection />
         <GallerySection />
         <ReviewsSection />
         <BookingSection />
       </main>
-
       <Footer />
-
-      {/* Floating Action */}
       <a
-        href="#agendar"
-        className="fixed bottom-8 right-8 z-50 flex size-14 items-center justify-center rounded-full bg-rose text-white shadow-2xl shadow-rose/40 transition-transform hover:scale-110 active:scale-90 md:hidden"
-        aria-label="Agendar horário"
+        href={whatsapp}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Falar com a Nath no WhatsApp"
+        className="fixed bottom-5 right-5 z-50 grid size-14 place-items-center rounded-full bg-primary text-primary-foreground shadow-editorial transition-transform hover:scale-105 md:hidden"
       >
-        <span className="text-xl">+</span>
+        <span aria-hidden="true" className="text-xl">↗</span>
       </a>
     </div>
   );
@@ -66,303 +57,165 @@ function Index() {
 
 function Header() {
   return (
-    <header className="relative z-30 mx-auto flex max-w-6xl items-center justify-between px-6 py-8">
-      <div className="group cursor-default">
-        <span className="font-display text-2xl font-semibold tracking-tighter">
-          nath beauty
-        </span>
-        <span className="mt-1 block font-meta text-[9px] uppercase tracking-[0.4em] text-rose">
-          master lash atelier
-        </span>
+    <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-md">
+      <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-6">
+        <a href="#inicio" className="font-display text-2xl leading-none">
+          Nath <span className="italic text-primary">Beauty</span>
+        </a>
+        <nav aria-label="Navegação principal" className="hidden items-center gap-8 text-sm md:flex">
+          <a href="#servicos" className="transition-colors hover:text-primary">Serviços</a>
+          <a href="#resultados" className="transition-colors hover:text-primary">Resultados</a>
+          <a href="#depoimentos" className="transition-colors hover:text-primary">Depoimentos</a>
+        </nav>
+        <a
+          href={whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-foreground"
+        >
+          Agendar
+        </a>
       </div>
-      <nav className="hidden items-center gap-10 font-body text-[13px] tracking-wide text-ink-soft md:flex">
-        <a href="#servicos" className="transition-colors hover:text-rose">
-          Serviços
-        </a>
-        <a href="#galeria" className="transition-colors hover:text-rose">
-          Galeria
-        </a>
-        <a href="#depoimentos" className="transition-colors hover:text-rose">
-          Reviews
-        </a>
-      </nav>
-      <a
-        href="#agendar"
-        className="rounded-full bg-ink px-6 py-2.5 font-body text-xs font-medium text-white transition-all hover:bg-rose hover:shadow-lg hover:shadow-rose/20"
-      >
-        Agendar
-      </a>
     </header>
   );
 }
 
 function HeroSection() {
   return (
-    <section className="mx-auto max-w-6xl px-6 pt-6 lg:pt-12">
-      <div className="grid items-center gap-16 lg:grid-cols-12">
-        <div className="relative lg:col-span-5">
-          <div className="absolute -top-16 -left-12 -z-10 font-display text-[180px] italic leading-none text-rose/5 select-none">
-            Nath
-          </div>
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2.5rem] bg-petal-deep shadow-2xl shadow-rose/5 ring-1 ring-white/60">
-            <img
-              src={heroLashes}
-              alt="Close macro de cílios premium aplicados com técnica exclusiva"
-              width={1000}
-              height={1250}
-              className="size-full object-cover"
-              fetchPriority="high"
-            />
-            <div className="absolute bottom-6 left-6 rounded-full bg-white/80 px-4 py-2 font-meta text-[9px] uppercase tracking-[0.2em] text-ink backdrop-blur-md ring-1 ring-black/5">
-              Premium Silk
-            </div>
-          </div>
+    <section id="inicio" className="mx-auto grid min-h-[calc(100vh-5rem)] max-w-6xl items-center gap-14 px-6 py-16 lg:grid-cols-12 lg:py-20">
+      <div className="relative z-10 lg:col-span-6">
+        <span className="inline-block bg-secondary px-4 py-2 text-xs font-semibold uppercase text-primary">
+          Nath Lorenzon · Sapiranga/RS
+        </span>
+        <h1 className="mt-8 font-display text-6xl leading-[0.92] text-balance sm:text-7xl lg:text-8xl">
+          Olhar que <span className="block italic text-primary">transforma.</span>
+        </h1>
+        <p className="mt-8 max-w-lg text-lg leading-relaxed text-muted-foreground">
+          Especialista em extensão de cílios e sobrancelhas, elevando sua autoestima através de um olhar feito para você.
+        </p>
+        <div className="mt-10 flex flex-wrap items-center gap-5">
+          <a
+            href={whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-md bg-primary px-8 py-4 font-semibold text-primary-foreground shadow-primary transition-all hover:-translate-y-0.5 hover:bg-foreground"
+          >
+            Agendar via WhatsApp
+          </a>
+          <a href="#resultados" className="border-b-2 border-secondary pb-1 text-sm font-semibold transition-colors hover:border-primary hover:text-primary">
+            Ver resultados
+          </a>
         </div>
+      </div>
 
-        <div className="lg:col-span-7">
-          <div className="animate-entry inline-flex items-center gap-3 rounded-full bg-white/40 px-4 py-1.5 font-meta text-[10px] uppercase tracking-[0.25em] text-rose backdrop-blur-sm ring-1 ring-rose/10">
-            <span className="size-1.5 rounded-full bg-rose"></span>
-            Estética do Olhar
-          </div>
-          <h1 className="animate-entry mt-8 max-w-[15ch] font-display text-5xl font-medium leading-[0.95] tracking-tight text-balance lg:text-7xl [animation-delay:150ms]">
-            A leveza de um <em className="italic text-rose">olhar</em> sob
-            medida.
-          </h1>
-          <p className="animate-entry mt-8 max-w-[42ch] font-body text-lg leading-relaxed text-ink-soft text-pretty [animation-delay:300ms]">
-            Design de cílios focado na naturalidade. Técnicas exclusivas para
-            quem busca sofisticação sem excessos.
-          </p>
-          <div className="animate-entry mt-10 flex flex-wrap items-center gap-4 [animation-delay:450ms]">
-            <a
-              href="#agendar"
-              className="group inline-flex items-center gap-3 rounded-full bg-rose px-8 py-4 font-body text-sm font-medium text-white transition-all hover:bg-ink hover:shadow-xl hover:shadow-ink/10"
-            >
-              Reservar Horário
-              <span
-                aria-hidden="true"
-                className="transition-transform group-hover:translate-x-1"
-              >
-                →
-              </span>
-            </a>
-            <a
-              href="#servicos"
-              className="inline-flex items-center rounded-full border border-rose/20 bg-transparent px-8 py-4 font-body text-sm text-ink transition-colors hover:bg-rose/5"
-            >
-              Conhecer Técnicas
-            </a>
-          </div>
-
-          <div className="animate-entry mt-16 flex gap-12 border-t border-hairline pt-8 [animation-delay:600ms]">
-            <div>
-              <span className="font-display text-3xl font-semibold text-rose">
-                98%
-              </span>
-              <span className="mt-1 block font-meta text-[10px] uppercase tracking-[0.2em] text-ink-soft">
-                Fidelidade
-              </span>
-            </div>
-            <div>
-              <span className="font-display text-3xl font-semibold text-rose">
-                15k+
-              </span>
-              <span className="mt-1 block font-meta text-[10px] uppercase tracking-[0.2em] text-ink-soft">
-                Aplicação
-              </span>
-            </div>
-          </div>
+      <div className="relative mx-auto w-full max-w-md lg:col-span-6 lg:mr-0">
+        <div aria-hidden="true" className="absolute -left-5 -top-5 size-full border-2 border-secondary" />
+        <div className="relative aspect-[4/5] overflow-hidden bg-secondary shadow-editorial">
+          <img src={heroLashes} alt="Aplicação profissional de extensão de cílios" width={1000} height={1250} fetchPriority="high" className="size-full object-cover" />
+        </div>
+        <div className="absolute -bottom-8 -left-4 bg-card p-5 shadow-editorial sm:-left-10">
+          <strong className="block font-display text-3xl font-normal text-primary">+6 anos</strong>
+          <span className="text-[11px] font-semibold uppercase text-muted-foreground">de experiência</span>
         </div>
       </div>
     </section>
   );
 }
+
+const services = [
+  { number: "01", title: "Volume Brasileiro", description: "Preenchimento marcante, leve e com acabamento personalizado para o seu olhar." },
+  { number: "02", title: "Volume Russo", description: "Fios delicados em leques para conquistar mais densidade, definição e sofisticação." },
+  { number: "03", title: "Design de Sobrancelhas", description: "Desenho personalizado que valoriza seus traços e cria harmonia para o rosto." },
+];
 
 function ServicesSection() {
-  const services = [
-    {
-      number: "01",
-      title: "Soft Volume Rose",
-      description:
-        "A técnica assinatura do ateliê. Volume etéreo com fios ultrafinos em curvaturas personalizadas.",
-      duration: "2h 30m",
-      price: "R$ 290",
-    },
-    {
-      number: "02",
-      title: "Natural Mapping",
-      description:
-        "Extensões clássicas que respeitam a anatomia do seu olho, realçando a beleza que já existe.",
-      duration: "1h 45m",
-      price: "R$ 220",
-    },
-    {
-      number: "03",
-      title: "Hybrid Glow",
-      description:
-        "Combinação equilibrada de fios clássicos e volumosos para um olhar com leveza e definição.",
-      duration: "2h",
-      price: "R$ 250",
-    },
-    {
-      number: "04",
-      title: "Retoque Express",
-      description:
-        "Manutenção rápida para manter o design impecável entre as aplicações completas.",
-      duration: "1h",
-      price: "R$ 120",
-    },
-  ];
-
   return (
-    <section id="servicos" className="mx-auto max-w-6xl px-6 pt-32">
-      <div className="mb-16">
-        <span className="font-meta text-[10px] uppercase tracking-[0.3em] text-rose">
-          menu de serviços
-        </span>
-        <h2 className="mt-4 font-display text-4xl font-medium tracking-tight">
-          Técnicas e Protocolos
-        </h2>
-      </div>
-
-      <div className="grid gap-4">
-        {services.map((service) => (
-          <div
-            key={service.number}
-            className="group relative overflow-hidden rounded-3xl bg-white/30 p-8 ring-1 ring-rose/5 transition-all hover:bg-white/60"
-          >
-            <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
-              <div className="flex gap-6">
-                <span className="font-meta text-xs text-rose/40">
-                  {service.number}
-                </span>
-                <div>
-                  <h3 className="font-display text-2xl font-medium">
-                    {service.title}
-                  </h3>
-                  <p className="mt-2 max-w-md font-body text-sm text-ink-soft">
-                    {service.description}
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-center gap-8 md:text-right">
-                <div>
-                  <span className="block font-meta text-[10px] uppercase tracking-widest text-ink-soft">
-                    Duração
-                  </span>
-                  <span className="font-display text-lg">
-                    {service.duration}
-                  </span>
-                </div>
-                <div className="h-8 w-px bg-hairline"></div>
-                <div>
-                  <span className="block font-meta text-[10px] uppercase tracking-widest text-ink-soft">
-                    Valor
-                  </span>
-                  <span className="font-display text-lg text-rose">
-                    {service.price}
-                  </span>
-                </div>
-              </div>
-            </div>
+    <section id="servicos" className="bg-card py-24">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <span className="text-xs font-semibold uppercase text-primary">Especialidades</span>
+            <h2 className="mt-3 font-display text-5xl">Serviços</h2>
           </div>
-        ))}
+          <p className="max-w-sm text-muted-foreground">Técnicas escolhidas para respeitar seus fios naturais e traduzir o resultado que você deseja.</p>
+        </div>
+        <div className="mt-14 grid gap-px bg-border md:grid-cols-3">
+          {services.map((service) => (
+            <article key={service.number} className="group bg-background p-8 transition-colors duration-300 hover:bg-primary hover:text-primary-foreground">
+              <span className="font-display text-4xl text-primary/35 transition-colors group-hover:text-primary-foreground/50">{service.number}</span>
+              <h3 className="mt-10 font-display text-2xl">{service.title}</h3>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground transition-colors group-hover:text-primary-foreground/80">{service.description}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
+const gallery = [
+  { src: gallery1, alt: "Extensão de cílios com acabamento natural" },
+  { src: gallery2, alt: "Resultado de volume de cílios marcante" },
+  { src: gallery3, alt: "Extensão de cílios com curvatura personalizada" },
+  { src: gallery4, alt: "Detalhe de aplicação profissional de cílios" },
+];
+
 function GallerySection() {
-  const images = [
-    { src: gallery1, alt: "Resultado natural de extensão de cílios clássica" },
-    { src: gallery2, alt: "Look volumoso com técnica de volume russo" },
-    { src: gallery3, alt: "Estilo híbrido com curvatura suave e natural" },
-    { src: gallery4, alt: "Detalhe de cílios em estilo cat-eye elegante" },
-  ];
-
   return (
-    <section id="galeria" className="mx-auto max-w-6xl px-6 pt-32">
-      <div className="mb-16">
-        <span className="font-meta text-[10px] uppercase tracking-[0.3em] text-rose">
-          galeria
-        </span>
-        <h2 className="mt-4 font-display text-4xl font-medium tracking-tight">
-          Olhares que contam histórias
-        </h2>
-      </div>
-
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {images.map((image, index) => (
-          <div
-            key={index}
-            className="group relative aspect-square overflow-hidden rounded-3xl bg-petal-deep ring-1 ring-rose/5"
-          >
-            <img
-              src={image.src}
-              alt={image.alt}
-              width={1024}
-              height={1024}
-              loading="lazy"
-              className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
+    <section id="resultados" className="py-24">
+      <div className="mx-auto grid max-w-6xl gap-14 px-6 lg:grid-cols-12">
+        <div className="lg:col-span-5">
+          <span className="text-xs font-semibold uppercase text-primary">Portfólio</span>
+          <h2 className="mt-4 max-w-sm font-display text-5xl leading-tight">O resultado que você merece.</h2>
+          <p className="mt-7 max-w-sm leading-relaxed text-muted-foreground">Cada aplicação é planejada para valorizar a beleza que já existe em você.</p>
+          <div className="mt-10 space-y-6 border-l-2 border-secondary pl-6">
+            <div><strong className="block text-sm">Atendimento personalizado</strong><span className="text-sm text-muted-foreground">Mapeamento pensado para cada olhar</span></div>
+            <div><strong className="block text-sm">Técnica e segurança</strong><span className="text-sm text-muted-foreground">Cuidado em todas as etapas</span></div>
           </div>
-        ))}
+          <a href={instagram} target="_blank" rel="noopener noreferrer" className="mt-10 inline-block border-b-2 border-primary pb-1 font-semibold text-primary">@nathlorenzon_beauty ↗</a>
+        </div>
+        <div className="grid grid-cols-2 gap-4 lg:col-span-7">
+          <div className="space-y-4">
+            <GalleryImage image={gallery[0]} shape="square" />
+            <GalleryImage image={gallery[1]} shape="portrait" />
+          </div>
+          <div className="space-y-4 pt-12">
+            <GalleryImage image={gallery[2]} shape="portrait" />
+            <GalleryImage image={gallery[3]} shape="square" />
+          </div>
+        </div>
       </div>
     </section>
+  );
+}
+
+function GalleryImage({ image, shape }: { image: { src: string; alt: string }; shape: "square" | "portrait" }) {
+  return (
+    <figure className={`group overflow-hidden bg-secondary ${shape === "square" ? "aspect-square" : "aspect-[3/4]"}`}>
+      <img src={image.src} alt={image.alt} width={800} height={shape === "square" ? 800 : 1067} loading="lazy" className="size-full object-cover transition-transform duration-700 group-hover:scale-105" />
+    </figure>
   );
 }
 
 function ReviewsSection() {
-  const reviews = [
-    {
-      quote:
-        "Parece que nasci assim. Leveza total, sem nada artificial. A Nath tem um olhar único.",
-      name: "Marina P.",
-      service: "Soft Volume Rose",
-    },
-    {
-      quote:
-        "Atendimento impecável e resultado cirúrgico. Virei cliente fiel do ateliê.",
-      name: "Clara S.",
-      service: "Natural Mapping",
-    },
-    {
-      quote:
-        "A Nath entende o seu olhar antes de colocar um fio só. Experiência premium do início ao fim.",
-      name: "Bianca R.",
-      service: "Hybrid Glow",
-    },
-  ];
-
   return (
-    <section id="depoimentos" className="mx-auto max-w-6xl px-6 pt-32">
-      <div className="mb-16">
-        <span className="font-meta text-[10px] uppercase tracking-[0.3em] text-rose">
-          reviews
-        </span>
-        <h2 className="mt-4 font-display text-4xl font-medium tracking-tight">
-          Confiança em cada olhar
-        </h2>
-      </div>
-
-      <div className="grid gap-4 md:grid-cols-3">
-        {reviews.map((review, index) => (
-          <figure
-            key={index}
-            className="rounded-3xl bg-white/30 p-8 ring-1 ring-rose/5"
-          >
-            <blockquote className="font-body text-sm leading-relaxed text-ink">
-              “{review.quote}”
-            </blockquote>
-            <figcaption className="mt-6">
-              <span className="font-display text-base font-medium text-rose">
-                {review.name}
-              </span>
-              <span className="mt-1 block font-meta text-[10px] uppercase tracking-widest text-ink-soft">
-                {review.service}
-              </span>
-            </figcaption>
+    <section id="depoimentos" className="bg-foreground py-24 text-background">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="text-center">
+          <span className="text-xs font-semibold uppercase text-secondary">Experiências reais</span>
+          <h2 className="mt-4 font-display text-5xl">Quem confia na Nath</h2>
+          <p aria-label="5 estrelas" className="mt-5 text-lg text-secondary">★★★★★</p>
+        </div>
+        <div className="mx-auto mt-14 grid max-w-4xl gap-px bg-background/15 md:grid-cols-2">
+          <figure className="bg-foreground p-8 md:p-10">
+            <blockquote className="font-display text-2xl italic leading-relaxed">“A Nath tem um cuidado incrível e o resultado fica leve, delicado e lindo.”</blockquote>
+            <figcaption className="mt-8 text-sm text-background/60">Cliente Nath Beauty</figcaption>
           </figure>
-        ))}
+          <figure className="bg-foreground p-8 md:p-10">
+            <blockquote className="font-display text-2xl italic leading-relaxed">“Ela entende exatamente o que combina com o nosso olhar. Atendimento impecável.”</blockquote>
+            <figcaption className="mt-8 text-sm text-background/60">Cliente Nath Beauty</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
   );
@@ -370,35 +223,12 @@ function ReviewsSection() {
 
 function BookingSection() {
   return (
-    <section id="agendar" className="mx-auto max-w-6xl px-6 py-32">
-      <div className="relative overflow-hidden rounded-[3rem] bg-ink px-8 py-20 text-center text-white md:px-20">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute -top-1/2 -left-1/4 size-[800px] rounded-full bg-rose blur-[160px]"></div>
-        </div>
-        <div className="relative z-10 mx-auto max-w-2xl">
-          <span className="font-meta text-[10px] uppercase tracking-[0.4em] text-rose">
-            agendamento exclusivo
-          </span>
-          <h2 className="mt-8 font-display text-4xl font-medium leading-tight md:text-5xl">
-            Transforme seu olhar com a precisão que você merece.
-          </h2>
-          <p className="mt-6 font-body text-white/60">
-            Horários limitados para garantir a excelência em cada aplicação.
-          </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
-              href="https://wa.me/5511999999999"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full bg-rose px-10 py-4 font-medium transition-transform hover:scale-105 active:scale-95"
-            >
-              Falar no WhatsApp
-            </a>
-            <span className="font-meta text-[10px] uppercase tracking-widest text-white/40">
-              Atendimento seg a sáb
-            </span>
-          </div>
-        </div>
+    <section id="agendar" className="bg-primary py-24 text-primary-foreground">
+      <div className="mx-auto flex max-w-4xl flex-col items-center px-6 text-center">
+        <span className="text-xs font-semibold uppercase text-primary-foreground/70">Seu novo olhar começa aqui</span>
+        <h2 className="mt-5 font-display text-5xl leading-tight sm:text-6xl">Pronta para se sentir ainda mais linda?</h2>
+        <p className="mt-6 max-w-xl text-primary-foreground/80">Fale diretamente com a Nath, escolha o melhor procedimento e reserve seu horário.</p>
+        <a href={whatsapp} target="_blank" rel="noopener noreferrer" className="mt-10 rounded-md bg-foreground px-10 py-5 font-semibold text-background transition-transform hover:-translate-y-0.5">Falar com a Nath no WhatsApp ↗</a>
       </div>
     </section>
   );
@@ -406,37 +236,11 @@ function BookingSection() {
 
 function Footer() {
   return (
-    <footer className="border-t border-hairline py-12">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 md:flex-row">
-        <div className="text-center md:text-left">
-          <span className="font-display text-xl font-semibold">
-            nath beauty
-          </span>
-          <p className="mt-1 font-meta text-[9px] uppercase tracking-widest text-ink-soft">
-            © 2024 · All rights reserved
-          </p>
-        </div>
-        <div className="flex gap-8 font-meta text-[10px] uppercase tracking-widest text-ink-soft">
-          <a
-            href="https://instagram.com/nathbeauty"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-rose"
-          >
-            Instagram
-          </a>
-          <a
-            href="https://wa.me/5511999999999"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-rose"
-          >
-            WhatsApp
-          </a>
-          <a href="#" className="hover:text-rose">
-            Location
-          </a>
-        </div>
+    <footer className="bg-background py-10">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 text-center md:flex-row md:text-left">
+        <div><strong className="font-display text-2xl font-normal">Nath <span className="italic text-primary">Beauty</span></strong><p className="mt-1 text-xs text-muted-foreground">Nath Lorenzon · Sapiranga/RS</p></div>
+        <div className="flex gap-7 text-sm font-semibold"><a href={instagram} target="_blank" rel="noopener noreferrer" className="hover:text-primary">Instagram ↗</a><a href={whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-primary">WhatsApp ↗</a></div>
+        <p className="text-xs text-muted-foreground">© 2026 Nath Beauty</p>
       </div>
     </footer>
   );
